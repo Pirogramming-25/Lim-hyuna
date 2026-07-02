@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>리뷰리스트</title>
+</head>
+<body>
+    <a href="{% url 'review_new' %}">리뷰작성</a>
+    <hr>
+
+    {% for review in reviews %}
+        <div>
+            <img src="image/015000000070.jpg" alt="">
+            <h2><a href="{% url 'review_detail' review.pk %}">{{ review.title }}</a></h2>
+            <p>개봉연도 {{ review.year }}년</p>
+            <p>장르 {{ review.genre }}</p>
+            <p>별점 {{ review.rating }}</p>
+            <hr>
+        </div>
+    {% empty %}
+        <p>게시글이 없습니다.</p>
+    {% endfor %}
+</body>
+</html>
